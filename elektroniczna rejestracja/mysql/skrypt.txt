@@ -1,0 +1,33 @@
+CREATE DATABASE rekrutacja;
+
+CREATE TABLE uzytkownicy (imie varchar(40), nazwisko varchar(40),pesel varchar(11) NOT NULL, login varchar(20) NOT NULL, haslo varchar(20) NOT NULL, prawo_dostepu int NOT NULL, primary key(pesel));
+
+CREATE TABLE wyniki_matury (pesel varchar(11) NOT NULL, id_przedmiotu int NOT NULL, wynik float NOT NULL);
+
+CREATE TABLE przedmioty (id_przedmioty int NOT NULL AUTO_INCREMENT, nazwa_przedmiotu varchar(20) NOT NULL, primary key (id_przedmioty));
+
+CREATE TABLE adresy (miasto varchar(20) NOT NULL, ulica varchar(40) NOT NULL, kod_pocztowy varchar(6) NOT NULL, nr_budynku int NOT NULL, nr_lokalu int NOT NULL, pesel varchar(11) NOT NULL);
+
+CREATE TABLE uzytkownicy_kierunki (pesel varchar(11) NOT NULL, id_kierunku int NOT NULL);
+
+CREATE TABLE kierunki (id_kierunku int NOT NULL AUTO_INCREMENT, nazwa_kierunku varchar(60) NOT NULL, opis MEDIUMBLOB, id_wydzialu int NOT NULL, primary key(id_kierunku));
+
+CREATE TABLE wydzialy (id_wydzialu int NOT NULL AUTO_INCREMENT, nazwa_wydzialu varchar(60) NOT NULL, miasto varchar(20) NOT NULL, ulica varchar(40) NOT NULL, kod_pocztowy varchar(6) NOT NULL, nr_budynku int NOT NULL, primary key(id_wydzialu));
+
+CREATE TABLE prawa_dostepu (id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, OPIS VARCHAR(100));
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/uzytkownicy.csv' INTO TABLE uzytkownicy FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/wyniki_matury.csv' INTO TABLE wyniki_matury FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/przedmioty.csv' INTO TABLE przedmioty FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/adresy.csv' INTO TABLE adresy FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/uzytkownicy_kierunki.csv' INTO TABLE uzytkownicy_kierunki FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/kierunki.csv' INTO TABLE kierunki FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/wydzialy.csv' INTO TABLE wydzialy FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
+
+LOAD DATA LOCAL INFILE '/tmp/Projekt/prawa_dostepu.csv' INTO TABLE prawa_dostepu FIELDS TERMINATED BY ';'  LINES TERMINATED BY '\n';
