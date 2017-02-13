@@ -1,0 +1,41 @@
+#container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+
+#title{
+    background-color: yellow;
+    text-align: center;
+    padding: 15px;
+}
+
+#left{
+    float: left;
+    width: 380px;
+    padding: 10px;
+}
+#center{
+    float: left;
+    width: 970px;
+    min-height: 400px;
+    padding: 15px;
+    background: lightgrey;
+}
+#right{
+    float: left;
+    width: 380px;
+    padding: 10px;
+}
+#footer{
+    clear: both;
+    text-align: center;
+    background-color: yellow;
+    padding: 15px;
+    width: 970px;
+}
+.hasError{
+    /*clear: both;*/
+    color: red;
+    visibility: visible;
+}
